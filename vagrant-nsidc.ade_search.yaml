@@ -1,5 +1,5 @@
 project: bcube_search
-gitrepo: git@github.com:hwilcox/hwilcox-interface.git
+gitrepo: git@github.com:hwilcox/bcube-interface.git
 
 vsphere:
   template: trusty64-nsidc
