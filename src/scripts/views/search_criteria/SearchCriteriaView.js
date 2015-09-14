@@ -21,6 +21,7 @@ define(
 
       events: {
         'click button.find-data' : 'onFindDataPressed',
+        'click button.gi-tract-data' : 'onGITractDataPressed',
         'keypress input.keyboard-active' : 'onKeyPressedInInput',
         'click #reset-search': 'onResetSearchClicked'
       },

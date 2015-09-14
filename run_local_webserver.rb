@@ -66,9 +66,13 @@ def start_webrick(config = {})
       res.status = 200
       res['Content-Type'] = search_proxy['content_type']
       res['Access-Control-Allow-Origin'] = '*'  # may as well throw in a CORS header...
+      res['Access-Control-Allow-Methods'] = '*'  # may as well throw in a CORS header...
+      res['Access-Control-Allow-Headers'] = '*'  # may as well throw in a CORS header...
+      res['Access-Control-Request-Method'] = '*'  # may as well throw in a CORS header...
 
       # It's hokey, but it seems to work: after pulling the content down from
       # the remote server, replace any paths that are proxied by this server.
+      puts "search_url = #{search_url}"
       body = open(search_url).read
       proxed_paths.each do |remote_path, local_path|
         body = body.gsub(remote_path, "http://#{req.host}:#{req.port}#{local_path}")

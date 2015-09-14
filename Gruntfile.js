@@ -180,7 +180,8 @@ module.exports = function (grunt) {
           {expand: true, cwd: 'bower_components/openlayers', src: ['img/**/*', 'theme/**/*'], dest: 'src/contrib/openlayers/'},
           {expand: true, cwd: 'bower_components/proj4', src: ['**'], dest: 'src/contrib/proj4/'},
           {expand: true, cwd: 'bower_components/tipsy', src: ['**'], dest: 'src/contrib/tipsy/'},
-          {expand: true, cwd: 'bower_components/web-socket-js', src: ['**'], dest: 'src/contrib/web-socket-js/'}
+          {expand: true, cwd: 'bower_components/web-socket-js', src: ['**'], dest: 'src/contrib/web-socket-js/'},
+          {expand: true, cwd: 'bower_components/giapi/giapi-1.2.9-beta.min.js', src: ['**'], dest: 'src/contrib/giapi/'}
         ]
       }
     },
@@ -330,7 +331,8 @@ module.exports = function (grunt) {
             'src/contrib/jasmine-jquery/jasmine-jquery-1.4.2.js',
             'src/contrib/jasmine-sinon/jasmine-sinon.js',
             'http://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.2/typeahead.bundle.min.js',
-            'src/scripts/lib/require_mocking.js'
+            'src/scripts/lib/require_mocking.js',
+            'src/contrib/giapi/giapi-1.2.9-beta.min.js'
           ]
         }
       }

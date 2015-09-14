@@ -35,6 +35,13 @@
       vertical-align: bottom;
     }
 
+        // submit search button
+    &.gi-tract-data {
+      font-size: $find-data-font-size;
+      margin: 3px 10px 0 0;
+      vertical-align: bottom;
+    }
+
     &.reset-search {
       font-size: 12px;
       width: 60px;
