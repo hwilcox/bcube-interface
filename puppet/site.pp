@@ -70,7 +70,7 @@ if $environment == 'ci' or $enviroment == 'dev' or $environment == 'integration'
 }
 
 # blue/green/red can be removed from here when VGTNSIDC-153 is done
-if ($environment == 'dev') or $environment == 'integration') or ($environment == 'qa') or ($environment == 'staging') or ($environment == 'production') or ($environment == 'blue') or ($environment == 'green') or ($environment == 'red') {
+if ($environment == 'dev') or ($environment == 'integration') or ($environment == 'qa') or ($environment == 'staging') or ($environment == 'production') or ($environment == 'blue') or ($environment == 'green') or ($environment == 'red') {
 
   $hiera_project = hiera('project')
 
