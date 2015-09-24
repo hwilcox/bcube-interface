@@ -77,6 +77,32 @@ define(
         }
       },
 
+      onGIDiscoverResponse: function (result) {
+          var element = $('#results');
+          var paginator = result[0];
+
+          var resultSet = paginator.resultSet();
+
+          element.append('<h3>- Result Set -</h3>');
+          element.append(JSON.stringify(resultSet, null, 4));
+
+          var page = paginator.page();
+
+          element.append('<h3>- Nodes of first results set page -</h3>');
+          element.append('<pre>');
+
+          while(page.hasNext()){
+              // retrieving the next page node
+              var node = page.next();
+
+              // retrieving the node report
+              var report = node.report();
+
+              element.append(JSON.stringify(report,null,4));
+          }
+          element.append('</pre>');
+      },
+
       onGITractDataPressed: function () {
           GIAPI.logger.enabled = true;
           var dab = GIAPI.DAB('http://bcube.geodab.eu/bcube-broker/');
@@ -86,33 +112,7 @@ define(
           constraints.where.west = 68.63;
           constraints.where.north = -149.6;
           constraints.where.east = 68.63;
-          dab.discover(onGIDiscoverResponse, constraints);
-      },
-
-      onGIDiscoverResponse: function () {
-          var element = $("#results");
-          var paginator = result[0];
-
-          var resultSet = paginator.resultSet();
-
-          element.append("<h3>- Result Set -</h3>");
-          element.append(JSON.stringify(resultSet, null, 4));
-
-          var page = paginator.page();
-
-          element.append("<h3>- Nodes of first results set page -</h3>");
-          document.writeln("<pre>");
-
-          while(page.hasNext()){
-              // retrieving the next page node
-              var node = page.next();
-
-              // retrieving the node report
-              var report = node.report();
-
-              document.writeln(JSON.stringify(report,null,4));
-          }
-          document.writeln("</pre>");
+          dab.discover(this.onGIDiscoverResponse, constraints);
       },
 
       getGeoBbox: function () {
