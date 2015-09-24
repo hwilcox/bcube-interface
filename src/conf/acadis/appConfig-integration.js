@@ -12,7 +12,7 @@ define([],
       osGeoRel: 'overlaps',
       osDtStart: '',
       osDtEnd: '',
-      osRequestHeaders: [{name: 'X-Requested-With', value: 'ADE'}],
+      osRequestHeaders: [],
       osFacetFilters: {},
       osSortKeys: 'score,,desc'
     },
