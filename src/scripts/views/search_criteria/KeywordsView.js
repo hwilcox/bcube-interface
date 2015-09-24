@@ -62,7 +62,7 @@ define(
           queryTokenizer: Bloodhound.tokenizers.whitespace,
           limit: 10,
           remote: {
-            url: '/api/dataset/2/suggest?q=%QUERY&source=' + this.source, // OpenSearch Suggestion url
+            url: 'http://nsidc.org/api/dataset/2/suggest?q=%QUERY&source=' + this.source, // OpenSearch Suggestion url
             filter: this.parseOpenSearchSuggestions
           }
         });

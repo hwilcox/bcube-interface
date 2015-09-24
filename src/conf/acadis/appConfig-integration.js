@@ -2,7 +2,7 @@ define([],
   function () {
 
     var openSearchOptions = {
-      osdd: '/api/dataset/2/OpenSearchDescription',
+      osdd: 'http://nsidc.org/api/dataset/2/OpenSearchDescription',
       osSource: 'ADE',
       osStartIndex: 0,
       osItemsPerPage: 25,
