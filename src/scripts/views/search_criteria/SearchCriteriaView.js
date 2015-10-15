@@ -109,10 +109,10 @@ define(
 
           var constraints = {
               'where': {
-                  'south': -149.6,
-                  'west': 68.63,
-                  'north': -149.6,
-                  'east': 68.63
+                  'west': -149.6,
+                  'south': 68.63,
+                  'east': -149.6,
+                  'north': 68.63
               }
           };
           dab.discover(this.onGIDiscoverResponse, constraints);
