@@ -107,11 +107,14 @@ define(
           GIAPI.logger.enabled = true;
           var dab = GIAPI.DAB('http://bcube.geodab.eu/bcube-broker/');
 
-          var constraints = {};
-          constraints.where.south = -149.6;
-          constraints.where.west = 68.63;
-          constraints.where.north = -149.6;
-          constraints.where.east = 68.63;
+          var constraints = {
+              'where': {
+                  'south': -149.6,
+                  'west': 68.63,
+                  'north': -149.6,
+                  'east': 68.63
+              }
+          };
           dab.discover(this.onGIDiscoverResponse, constraints);
       },
 
