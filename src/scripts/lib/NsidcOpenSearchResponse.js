@@ -53,7 +53,12 @@ define(['lib/utility_functions', 'lib/JSONResults'],
         var datasetId = $(xml).find('id');
         var ggd906Id = String('GGD906');
         if(ggd906Id.localeCompare(datasetId)) {
-            linkArr.push('http://push.me');
+            var linkObj = {
+                title: 'GI-Tract Data',
+                href: 'http://push.me',
+                description: 'Query GI-Cat and return data found.'
+            };
+            linkArr.push(linkObj);
         }
 
         return linkArr;
