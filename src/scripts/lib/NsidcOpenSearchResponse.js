@@ -50,6 +50,11 @@ define(['lib/utility_functions', 'lib/JSONResults'],
           linkArr.push(linkObj);
         });
 
+        var datasetId = $(xml).find('id');
+        if(datasetId.localeCompare('GGD906')) {
+            linkArr.push('http://push.me');
+        }
+
         return linkArr;
       }
 
