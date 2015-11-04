@@ -51,7 +51,8 @@ define(['lib/utility_functions', 'lib/JSONResults'],
         });
 
         var datasetId = $(xml).find('id');
-        if(datasetId.localeCompare('GGD906')) {
+        var ggd906Id = String('GGD906');
+        if(ggd906Id.localeCompare(datasetId)) {
             linkArr.push('http://push.me');
         }
 
