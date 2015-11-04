@@ -1,10 +1,12 @@
-define(['views/result_item/AuthorView',
+define(['lib/objectFactory',
+       'views/result_item/AuthorView',
        'views/result_item/SpatialMetadataView',
        'views/result_item/NsidcTemporalMetadataView',
        'views/result_item/DatacenterView',
        'views/result_item/SummaryView',
        'vendor/requirejs/text!templates/result_item/result_item.html'],
-       function (AuthorView,
+       function (objectFactory,
+                 AuthorView,
                  SpatialMetadataView,
                  TemporalMetadataView,
                  DatacenterView,
@@ -29,6 +31,10 @@ define(['views/result_item/AuthorView',
       if (this.model) {
         this.$el.html(templates.item({title: this.model.get('title'),
                                       url: this.model.get('catalogUrl')}));
+
+        objectFactory.createInstance(
+          'GetDataButtonView', {el: this.$el.find('.get-data'), model: this.model}
+        ).render();
 
         new AuthorView({
           el: this.$el.find('.author')[0],
