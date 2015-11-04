@@ -52,7 +52,7 @@ define(['lib/utility_functions', 'lib/JSONResults'],
 
         var datasetId = $(xml).find('id');
         var ggd906Id = String('GGD906');
-        if(ggd906Id.localeCompare(datasetId)) {
+        if(ggd906Id.localeCompare(datasetId) == 0) {
             var linkObj = {
                 title: 'GI-Tract Data',
                 href: 'http://push.me',
