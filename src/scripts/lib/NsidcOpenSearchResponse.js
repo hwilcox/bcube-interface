@@ -50,7 +50,7 @@ define(['lib/utility_functions', 'lib/JSONResults'],
           linkArr.push(linkObj);
         });
 
-        var datasetId = $(xml).find('id');
+        var datasetId = $(xml).filterNode('id').text();
         var ggd906Id = String('GGD906');
         console.log('GGD906 ID = ' + ggd906Id + '  Dataset ID = ' + datasetId);
         if(ggd906Id.localeCompare(datasetId) == 0) {
