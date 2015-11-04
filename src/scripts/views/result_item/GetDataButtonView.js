@@ -14,8 +14,7 @@ define(['vendor/requirejs/text!templates/result_item/get_data_button_multiple_ur
   GetDataButtonView = Backbone.View.extend({
     events: {
       'click .getdata-toggle, .getdata-icon': 'toggle',
-      'click .getdata-value': 'openLink',
-      'click button.gi-tract-data' : 'onGITractDataPressed'
+      'click .getdata-value': 'onGITractDataPressed'
     },
 
     toggle: function (event) {
