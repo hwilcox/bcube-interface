@@ -2,7 +2,7 @@ define([],
   function () {
 
     var openSearchOptions = {
-      osdd: '/api/dataset/2/OpenSearchDescription',
+      osdd: 'http://nsidc.org/api/dataset/2/OpenSearchDescription',
       osSource: 'ADE',
       osStartIndex: 0,
       osItemsPerPage: 25,
@@ -12,7 +12,7 @@ define([],
       osGeoRel: 'overlaps',
       osDtStart: '',
       osDtEnd: '',
-      osRequestHeaders: [{name: 'X-Requested-With', value: 'ADE'}],
+      // osRequestHeaders: [{name: 'X-Requested-With', value: 'ADE'}],
       osFacetFilters: {},
       osSortKeys: 'score,,desc'
     },
@@ -28,7 +28,7 @@ define([],
         crazyEggMetrics: false,
 
         // websockets
-        wsService: '/api/notification',
+        wsService: 'http://nsidc.org/api/notification',
         wsHostApp: 'ADE',
 
         // results header
