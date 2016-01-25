@@ -1,7 +1,9 @@
 define(['vendor/requirejs/text!templates/result_item/get_data_button_multiple_urls.html',
        'vendor/requirejs/text!templates/result_item/get_data_button_single_url.html',
-       'vendor/requirejs/text!templates/result_item/get_data_button_no_url.html'],
-       function (multipleLinksTemplate, singleLinkTemplate, noLinkTemplate) {
+       'vendor/requirejs/text!templates/result_item/get_data_button_no_url.html',
+       'lib/mediator_mixin',
+       'lib/objectFactory'],
+       function (multipleLinksTemplate, singleLinkTemplate, noLinkTemplate, mediatorMixin, objectFactory) {
   var templates, GetDataButtonView;
 
   templates = {
@@ -24,11 +26,20 @@ define(['vendor/requirejs/text!templates/result_item/get_data_button_multiple_ur
 
     openLink: function (event) {
       event.stopImmediatePropagation();
-      window.open($(event.currentTarget).attr('get-data-link'));
+      var data_link = $(event.currentTarget).attr('get-data-link');
+      if (data_link.indexOf('gi-axe-capabilities') > -1) {
+        this.mediatorTrigger('search:accessCapabilitiesLinkOpen', data_link);
+      } else {
+        window.open(data_link);
+      }
     },
 
     render : function () {
       var button_title, links, dataLinks, orderLinks, externalLinks;
+
+      objectFactory.createInstance('AccessCapabilitiesView', {
+        el: this.$el.find('.getdata-gi-axe')
+      }).render();
 
       button_title = 'Get Data';
 
@@ -51,6 +62,9 @@ define(['vendor/requirejs/text!templates/result_item/get_data_button_multiple_ur
       return this;
     }
   });
+
+  // Mix in the mediator behaviour
+  _.extend(GetDataButtonView.prototype, mediatorMixin);
 
   // Reveal the constructor
   return GetDataButtonView;

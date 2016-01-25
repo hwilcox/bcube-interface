@@ -69,14 +69,12 @@ define(['lib/utility_functions', 'lib/JSONResults'],
           var discover_url = 'http://localhost:8081/gi-cat/services/cswisogeo?service=CSW&request=GetRecordById&' +
                     'id=http://nsidc.org/api/opensearch/1.1/dataset/' + nsidc_id +
                     '&outputschema=http://www.isotc211.org/2005/gmi&elementSetName=full';
-          console.log("Discover URL: " + discover_url);
           var capabilities_url = 'http://localhost:8081/gi-axe/services/http-get?request=execute&service=WPS&' +
               'identifier=gi-axe-capabilities&jsondataoutput=true&DataInputs=descriptor%3Dhttp%253A%252F%252F' +
               'bcube.geodab.eu/bcube-broker%252Fservices%252Fcswiso%253Frequest%253DGetRecordById%2526version%253D' +
               '2.0.2%2526service%253DCSW%2526ElementSetName%253Dfull%2526outputSchema%253Dhttp%253A%252F%252F' +
               'www.isotc211.org%252F2005%252Fgmi%2526id%253Dhttp%25253A%25252F%25252Fnsidc.org%25252Fapi%25252F' +
               'opensearch%25252F1.1%25252Fdataset%25252F' + nsidc_id;
-          console.log("Capabilities URL: " + capabilities_url);
         $.ajax({
               url: discover_url,
               dataType: 'xml',

@@ -11,6 +11,7 @@ define(['views/result_item/SummaryView',
         'views/left_column/FacetView',
         'views/left_column/LeftColumnView',
         'views/left_column/LogoView',
+        'views/result_item/AccessCapabilitiesView',
         'views/result_item/ResultItemView',
         'views/result_item/GetDataButtonView',
         'views/search_criteria/SearchCriteriaView',
@@ -37,6 +38,7 @@ define(['views/result_item/SummaryView',
       FacetView,
       LeftColumnView,
       LogoView,
+      AccessCapabilitiesView,
       ResultItemView,
       GetDataButtonView,
       SearchCriteriaView,
@@ -122,6 +124,9 @@ define(['views/result_item/SummaryView',
       },
 
       'LeftColumnView': {Ctor: LeftColumnView, configOptions: {preset: {homePage: homePageEnabled, facets: facetsEnabled } } },
+      'AccessCapabilitiesView': {
+        Ctor: AccessCapabilitiesView
+      },
       'GetDataButtonView': {
         Ctor: GetDataButtonView,
         configOptions: {
