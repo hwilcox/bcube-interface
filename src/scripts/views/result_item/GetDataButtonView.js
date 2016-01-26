@@ -28,7 +28,8 @@ define(['vendor/requirejs/text!templates/result_item/get_data_button_multiple_ur
       event.stopImmediatePropagation();
       var data_link = $(event.currentTarget).attr('get-data-link');
       if (data_link.indexOf('gi-axe-capabilities') > -1) {
-        this.mediatorTrigger('search:accessCapabilitiesLinkOpen', data_link);
+        var accessCapabilitiesId = 'getdata-gi-axe-' + this.cid;
+        this.AccessCapabilitiesView.getAccessCapabilities(data_link, accessCapabilitiesId);
       } else {
         window.open(data_link);
       }
@@ -37,9 +38,13 @@ define(['vendor/requirejs/text!templates/result_item/get_data_button_multiple_ur
     render : function () {
       var button_title, links, dataLinks, orderLinks, externalLinks;
 
-      objectFactory.createInstance('AccessCapabilitiesView', {
-        el: $('.getdata-gi-axe')
+      var accessCapabilitiesId = 'getdata-gi-axe-' + this.cid;
+      var acElement = this.$el.parent().find('.getdata-gi-axe');
+      acElement.attr('id', accessCapabilitiesId);
+      this.AccessCapabilitiesView = objectFactory.createInstance('AccessCapabilitiesView', {
+        el: acElement
       }).render();
+      this.AccessCapabilitiesView.setElementId(accessCapabilitiesId);
 
       button_title = 'Get Data';
 

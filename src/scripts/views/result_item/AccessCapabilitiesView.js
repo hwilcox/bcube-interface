@@ -1,6 +1,6 @@
 /* jshint ignore:start */
 function hideAccessCapabilities() {
-  $('.getdata-gi-axe').addClass('hidden');
+  $('.getdata-gi-axe').html('');
 }
 /* jshint ignore:end */
 
@@ -12,8 +12,10 @@ define(['lib/mediator_mixin'],
 
     AccessCapabilitiesView = Backbone.View.extend({
 
+      accessCapabilitiesUrl: '',
+      elementId: '',
+
       initialize: function () {
-        this.message = '';
         this.bindEvents();
       },
 
@@ -25,32 +27,36 @@ define(['lib/mediator_mixin'],
         return this;
       },
 
-      getAccessCapabilities: function (access_capabilities_url) {
-        var element = $('.getdata-gi-axe');
+      setElementId: function (newId) {
+        this.elementId = newId;
+      },
+
+      getAccessCapabilities: function (access_capabilities_url, elementId) {
+        var elemIdSelector = '#' + this.elementId;
+        var element = $(elemIdSelector);
         var this_var = this;
         $.ajax({
             url: access_capabilities_url,
             dataType: 'jsonp'
           })
           .done(function (data) {
-            var validOptions = data.validOptions;
-            var defaultOptions = data.defaultOptions;
-            element.html('');
+            if(this_var.elementId === elementId) {
+              var validOptions = data.validOptions;
+              var defaultOptions = data.defaultOptions;
+              element.html('');
 
-            this_var.processValidOptions(validOptions, defaultOptions, element);
+              this_var.processValidOptions(validOptions, defaultOptions, element);
 
-            this_var.processDefaultOptions(validOptions, defaultOptions, element);
+              this_var.processDefaultOptions(validOptions, defaultOptions, element);
 
-            this_var.addBCubeDownloadLink(element);
+              this_var.addBCubeDownloadLink(element);
 
-            $('.get-data').removeClass('open');
+              $('.get-data').removeClass('open');
+            }
           })
           .fail(function (message) {
             element.append('<p>Call to get capabilities failed!</p>');
             element.append('<p>' + message + '</p>');
-          })
-          .always(function () {
-            element.removeClass('hidden');
           });
       },
 
