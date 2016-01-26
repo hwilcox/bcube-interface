@@ -38,7 +38,7 @@ define(['vendor/requirejs/text!templates/result_item/get_data_button_multiple_ur
       var button_title, links, dataLinks, orderLinks, externalLinks;
 
       objectFactory.createInstance('AccessCapabilitiesView', {
-        el: this.$el.find('.getdata-gi-axe')
+        el: $('.getdata-gi-axe')
       }).render();
 
       button_title = 'Get Data';
