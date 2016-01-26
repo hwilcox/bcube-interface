@@ -1,5 +1,9 @@
-define(['lib/mediator_mixin'
-  ],
+function hideAccessCapabilities() {
+  $('.getdata-gi-axe').addClass('hidden');
+};
+
+define(['lib/mediator_mixin'],
+
   function (mediatorMixin) {
 
     var AccessCapabilitiesView;
@@ -16,7 +20,8 @@ define(['lib/mediator_mixin'
       },
 
       events: {
-        'click #bcube-action': 'hideAccessCapabilities'
+        'click button#bcube-action': 'hideAccessCapabilities',
+        'click a#bcube-action': 'hideAccessCapabilities'
       },
 
       render: function () {
@@ -47,6 +52,8 @@ define(['lib/mediator_mixin'
           .fail(function (message) {
             element.append('<p>Call to get capabilities failed!</p>');
             element.append('<p>' + message + '</p>');
+          })
+          .always(function () {
             element.removeClass('hidden');
           });
       },
@@ -80,8 +87,9 @@ define(['lib/mediator_mixin'
         var outputRasterFormatValue = this.getRasterFormatString();
         var outputSpatialSubset = this.getWestString() + this.getNorthString() + this.getEastString() + this.getSouthString();
 
-        element.append('<p><a id=\'bcube-action\' ' +
-          'href=\'http://localhost:8081/gi-axe/services/http-get?' +
+        element.append('<p style="margin-left: 10px">' +
+          '<a id=\'bcube-action\' onclick="hideAccessCapabilities()"' +
+          'href=\'http://' + window.location.host + '/gi-axe/services/http-get?' +
           'request=execute' +
           '&service=WPS' +
           '&identifier=gi-axe-transform' +
@@ -94,15 +102,15 @@ define(['lib/mediator_mixin'
           '%3BoutputRasterFormat%3D' + outputRasterFormatValue +
           '%3BoutputCRS%3D' + outputCrsValue +
           '%3BoutputSubset%3D' + outputSpatialSubset +
-          '&RawDataOutput=resource\'>Download Me!</a>' +
-          '<button id=\'bcube-action\'>Cancel</button></p>');
+          '&RawDataOutput=resource\'>Download Data</a>' +
+          '<button onclick="hideAccessCapabilities()" style="margin-left: 10px" id=\'bcube-action\'>Cancel</button></p>');
       },
 
       processValidOptions: function (validOptions, defaultOptions, element) {
         _.map(validOptions[0], function (value, key) {
           var selectClass = key + '-valid';
           var wrapClass = key + '-wrap';
-          element.append('<label class="' + wrapClass + '">' + key + '</label>');
+          element.append('<label class="' + wrapClass + '" style="margin-right: 10px;">' + key + '</label>');
           if (_.has(defaultOptions, key)) {
             element.append('<option selected class="' + selectClass + '" value="' + value + '">' + value + '</option>');
           } else {
@@ -110,7 +118,7 @@ define(['lib/mediator_mixin'
           }
           var selectId = key + '-valid-id';
           element.find('.' + selectClass).wrapAll('<select class="' + wrapClass + '" id="' + selectId + '"></select>');
-          element.find('.' + wrapClass).wrapAll('<p></p>');
+          element.find('.' + wrapClass).wrapAll('<p style="margin-left: 10px;"></p>');
         });
       },
 
@@ -122,23 +130,12 @@ define(['lib/mediator_mixin'
             _.map(value, function (option, label) {
               var selectClass = label + '-default';
               var selectId = label + '-default-id';
-              element.append('<label class="' + selectClass + '">' + label + '</label>');
-              element.append('<input id="' + selectId + '" type="text" class="' + selectClass + '" name="' + label +
-                '" value="' + option + '"/></p>');
-              element.find('.' + selectClass).wrapAll('<p></p>');
+              element.append('<label class="' + selectClass + '" style="margin-right: 10px;">' + label + '</label>');
+              element.append('<input id="' + selectId + '" type="text" class="' + selectClass + '" value="' + option + '" READONLY/></p>');
+              element.find('.' + selectClass).wrapAll('<p style="margin-left: 10px;"></p>');
             });
           }
         });
-      },
-
-      hideAccessCapabilities: function () {
-        console.log('hiding element');
-        this.$el.addClass('hidden');
-        return this;
-      },
-
-      showAccessCapabilities: function () {
-        this.$el.removeClass('hidden');
       }
     });
 

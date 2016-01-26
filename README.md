@@ -1,6 +1,10 @@
 # ACADIS ADE Portal / NSIDC Search Portal
 
-An Opensearch-based single page search interface
+An Opensearch-based single page search interface.  This fork is the research demonstration of a functioning connection
+between the ACADIS ADE Portal and the BCube GI-Cat/GI-Axe instances at http://bcube.geodab.eu/bcube-broker/ and
+http://bcubeaxe.geodab.eu/bcube-broker-axe.
+
+There is a publicly available qa VM at http://qa.bcube_search.apps.nsidc.org.
 
 ### OPS Configuration Information
 

@@ -54,9 +54,9 @@ define(['lib/utility_functions', 'lib/JSONResults'],
       var capabilities_link = getBCubeAccessCapabilitesUrls(datasetId);
       if (!_.isUndefined(capabilities_link)) {
         var linkObj = {
-          title: 'GI-Tract Data',
+          title: 'BCube Download',
           href: capabilities_link,
-          description: 'Query GI-Cat and return data found.'
+          description: 'Transform and download this data through BCube GI-Axe.'
         };
         linkArr.push(linkObj);
       }
