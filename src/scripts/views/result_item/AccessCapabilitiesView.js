@@ -1,6 +1,8 @@
+/* jshint ignore:start */
 function hideAccessCapabilities() {
   $('.getdata-gi-axe').addClass('hidden');
-};
+}
+/* jshint ignore:end */
 
 define(['lib/mediator_mixin'],
 
@@ -19,11 +21,6 @@ define(['lib/mediator_mixin'],
         this.mediatorBind('search:accessCapabilitiesLinkOpen', this.getAccessCapabilities, this);
       },
 
-      events: {
-        'click button#bcube-action': 'hideAccessCapabilities',
-        'click a#bcube-action': 'hideAccessCapabilities'
-      },
-
       render: function () {
         return this;
       },
@@ -33,8 +30,7 @@ define(['lib/mediator_mixin'],
         var this_var = this;
         $.ajax({
             url: access_capabilities_url,
-            dataType: 'jsonp',
-            callback: 'displayAccessCapabilities'
+            dataType: 'jsonp'
           })
           .done(function (data) {
             var validOptions = data.validOptions;
@@ -103,7 +99,7 @@ define(['lib/mediator_mixin'],
           '%3BoutputCRS%3D' + outputCrsValue +
           '%3BoutputSubset%3D' + outputSpatialSubset +
           '&RawDataOutput=resource\'>Download Data</a>' +
-          '<button onclick="hideAccessCapabilities()" style="margin-left: 10px" id=\'bcube-action\'>Cancel</button></p>');
+          '<button style="margin-left: 10px" id=\'bcube-action\' onclick="hideAccessCapabilities()">Cancel</button></p>');
       },
 
       processValidOptions: function (validOptions, defaultOptions, element) {
