@@ -1,6 +1,6 @@
-define(['views/result_item/GetDataButtonView', 'views/result_item/AccessCapabilitiesView'],
-  function (GetDataButtonView, AccessCapabilitiesView) {
-    objectFactory.setConfig({
+define(['views/result_item/GetDataButtonView', 'views/result_item/AccessCapabilitiesView', 'lib/ObjectFactory'],
+  function (GetDataButtonView, AccessCapabilitiesView, ObjectFactory) {
+    ObjectFactory.setConfig({
       'AccessCapabilitiesView': AccessCapabilitiesView
     });
 
