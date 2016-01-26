@@ -1,4 +1,8 @@
-define(['views/result_item/GetDataButtonView'], function (GetDataButtonView) {
+define(['views/result_item/GetDataButtonView', 'views/result_item/AccessCapabilitiesView'],
+  function (GetDataButtonView, AccessCapabilitiesView) {
+    objectFactory.setConfig({
+      'AccessCapabilitiesView': AccessCapabilitiesView
+    });
 
   describe('Get Data button View', function () {
 
