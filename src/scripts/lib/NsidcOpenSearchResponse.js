@@ -66,10 +66,10 @@ define(['lib/utility_functions', 'lib/JSONResults'],
 
     function getBCubeAccessCapabilitesUrls(nsidc_id) {
       var discover_result;
-      var discover_url = 'http://localhost:8081/gi-cat/services/cswisogeo?service=CSW&request=GetRecordById&' +
+      var discover_url = 'http://' + window.location.host + '/gi-cat/services/cswisogeo?service=CSW&request=GetRecordById&' +
         'id=http://nsidc.org/api/opensearch/1.1/dataset/' + nsidc_id +
         '&outputschema=http://www.isotc211.org/2005/gmi&elementSetName=full';
-      var capabilities_url = 'http://localhost:8081/gi-axe/services/http-get?request=execute&service=WPS&' +
+      var capabilities_url = 'http://' + window.location.host + '/gi-axe/services/http-get?request=execute&service=WPS&' +
         'identifier=gi-axe-capabilities&jsondataoutput=true&DataInputs=descriptor%3Dhttp%253A%252F%252F' +
         'bcube.geodab.eu/bcube-broker%252Fservices%252Fcswiso%253Frequest%253DGetRecordById%2526version%253D' +
         '2.0.2%2526service%253DCSW%2526ElementSetName%253Dfull%2526outputSchema%253Dhttp%253A%252F%252F' +
