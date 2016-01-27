@@ -1,1 +1,15 @@
 // rules for ACADIS-only selectors go here
+
+.results-row-left {
+  float: left;
+  width: 65%;
+}
+
+.getdata-gi-axe {
+  position: absolute;
+  right:0px;
+  width:350px;
+  margin:10px;
+  z-index:1010;
+  background-color: whitesmoke;
+}

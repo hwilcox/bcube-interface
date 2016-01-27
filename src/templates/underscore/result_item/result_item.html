@@ -1,7 +1,7 @@
 
 <div class="results-text clearfix">
   <div class="get-data"></div>
-  <div class="getdata-gi-axe" style="float: right;width:350px;margin:10px;z-index:1010;background-color: whitesmoke;"></div>
+  <div class="getdata-gi-axe"></div>
   <h4 class="dataset-title">
     <% if (url) { %>
     <a href="<%= url %>" target="_blank"><%= title %></a>
@@ -12,10 +12,12 @@
 
   <div class="dataset-metadata">
     <div class="results-row spatial-coverage"></div>
-    <div class="results-row author"></div>
-    <div class="results-row temporal-coverage"></div>
-    <div class="results-row datacenter"></div>
-    <div class="results-row summary"></div>
+    <div class="results-row-left">
+      <div class="results-row author"></div>
+      <div class="results-row temporal-coverage"></div>
+      <div class="results-row datacenter"></div>
+      <div class="results-row summary"></div>
+    </div>
   </div>
 
 </div>
